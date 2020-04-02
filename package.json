@@ -1,0 +1,27 @@
+{
+  "name": "bizmemory",
+  "version": "1.0.0",
+  "description": "2020년 4월 hackathon 에서 작업한 bizmemory 명함관리 웹어플리케이션입니다.",
+  "main": "index.js",
+  "dependencies": {
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint": "^6.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songseungeun/bizmemory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songseungeun/bizmemory/issues"
+  },
+  "homepage": "https://github.com/songseungeun/bizmemory#readme"
+}

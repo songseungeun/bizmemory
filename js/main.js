@@ -8,7 +8,7 @@ const $cardList = document.querySelector('.cardList');
 const $sortList = document.querySelector('.sortList');
 
 const $favList = document.querySelector('.favList');
-const $favTitle = document.getElementById('favTitle');
+const $favTitle = document.querySelector('.favTitle');
 
 const $newName = document.querySelector('.newName');
 const $newEmail = document.querySelector('.newEmail');
@@ -69,7 +69,7 @@ const render = key => {
         </li>`;
   });
 
-  if (!favCardList.length) $favTitle.remove();
+  $favTitle.style.display = favCardList.length ? 'block' : 'none';
 
   $cardList.innerHTML = html;
   $favList.innerHTML = favHtml;

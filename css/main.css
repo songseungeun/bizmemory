@@ -26,7 +26,7 @@ body *, body *::before, body *::after {
 .wrapper {
   width: 100%;
   padding: 0;
-  background-color: #bfc6d42e;
+  background-color: #f4f4f4;
 }
 h1 {
   font-size: 40px;
@@ -42,7 +42,6 @@ h2 {
 }
 .newInfo {
   width: 300px;
-  height: 80vh;
   background-color: #fff;
   float: left;
   padding: 25px;
@@ -54,7 +53,7 @@ h2 {
 .newInfo input, .newInfo button {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 2px 0;
   font-family: 'Playfair Display', 'Noto Serif KR', serif;
 }
 .newInfo input {
@@ -73,9 +72,16 @@ h2 {
   font-weight: 700;
 }
 
+.nameWarn {
+  font-size: 10px;
+  padding: 0 10px;
+  color: rgb(72, 91, 167);
+}
+
+/* name card list */
 .namecardList {
   width: calc(100% - 340px);
-  height: 100vh;
+  min-height: 100%;
   background-color: #f4f4f4;
   float: right;
   padding: 10px;
@@ -103,6 +109,7 @@ h2 {
   display: inline-block;
 }
 
+/* card list */
 .cardList {
   width: 100%;
   clear: both;

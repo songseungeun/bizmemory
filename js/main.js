@@ -3,24 +3,18 @@ let favCardList = [];
 
 const $newInfo = document.querySelector('.newInfo');
 const $submitBtn = document.querySelector('.submitBtn');
-
+const $nameCardList = document.querySelector('.namecardList');
 const $cardList = document.querySelector('.cardList');
 const $sortList = document.querySelector('.sortList');
-
 const $favList = document.querySelector('.favList');
 const $favTitle = document.querySelector('.favTitle');
-
 const $newName = document.querySelector('.newName');
 const $newEmail = document.querySelector('.newEmail');
 const $newMobile = document.querySelector('.newMobile');
-
-
 const $blankMsg = document.querySelector('.blankMsg');
-
 const $modal = document.querySelector('.modal');
 const $warningMsg = document.querySelector('.warningMsg');
 const $warningClose = document.querySelector('.warningClose');
-
 
 const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 const checkMobile = /^\d{3}-\d{3,4}-\d{4}$/;
@@ -30,7 +24,11 @@ const blankMsg = () => {
   $blankMsg.style.display = (cardList.length || favCardList.length) ? 'none' : 'block';
 };
 
-const render = key => {
+const blankFav = () => {
+  $favTitle.style.display = favCardList.length ? 'block' : 'none';
+};
+
+const render = () => {
   let html = '';
   let favHtml = '';
   const isFav = [...cardList.filter(card => card.favorite), ...favCardList.filter(card => card.favorite)];
@@ -73,11 +71,10 @@ const render = key => {
         </li>`;
   });
 
-  $favTitle.style.display = favCardList.length ? 'block' : 'none';
-
   $cardList.innerHTML = html;
   $favList.innerHTML = favHtml;
 
+  blankFav();
   blankMsg();
 };
 
@@ -128,26 +125,26 @@ const getCardList = () => {
   },
   {
     id: 5,
-    name: '이웅모',
-    company: '라인',
-    division: '경영지원팀',
-    position: '과장',
-    email: 'wj456@naver.com',
-    mobile: '010-2535-4985',
-    color: 'namecard color3',
-    favorite: false,
-  },
-  {
-    id: 6,
     name: '김데레사',
     company: '에어비앤비',
     division: 'UX디자인팀',
     position: '책임',
     email: 'se7890@naver.com',
     mobile: '010-2355-2455',
-    color: 'namecard color4',
+    color: 'namecard color6',
     favorite: false,
-  }].sort((a, b) => b.id - a.id);
+  },
+  {
+    id: 6,
+    name: '이웅모',
+    company: '라인',
+    division: '경영지원팀',
+    position: '과장',
+    email: 'wj456@naver.com',
+    mobile: '010-2535-4985',
+    color: 'namecard color5',
+    favorite: false,
+  }].sort((card1, card2) => card2.id - card1.id);
 
   favCardList = [];
   render('id');
@@ -159,10 +156,9 @@ const generateId = () => {
 
 window.onload = getCardList;
 
-
 const generateColor = () => {
   const colorNumber = generateId();
-  return colorNumber % 4;
+  return colorNumber % 6;
 };
 
 $newName.onblur = e => {
@@ -179,8 +175,8 @@ $newMobile.onblur = e => {
 
 $submitBtn.onclick = () => {
 
-  let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
-  let newValues = inputs.map(input => input.value.trim());
+  const inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
+  const newValues = inputs.map(input => input.value.trim());
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
 
@@ -189,19 +185,24 @@ $submitBtn.onclick = () => {
     if (!newValues[0]) {
       $warningMsg.textContent = '이름을 입력해 주세요';
       return;
-    } if (!newValues[1]) {
+    }
+    if (!newValues[1]) {
       $warningMsg.textContent = '회사를 입력해 주세요';
       return;
-    } if (!newValues[2]) {
+    }
+    if (!newValues[2]) {
       $warningMsg.textContent = '부서를 입력해 주세요';
       return;
-    } if (!newValues[3]) {
+    }
+    if (!newValues[3]) {
       $warningMsg.textContent = '직급을 입력해 주세요';
       return;
-    } if (!newValues[4]) {
+    }
+    if (!newValues[4]) {
       $warningMsg.textContent = '이메일을 입력해 주세요';
       return;
-    } if (!newValues[5]) {
+    }
+    if (!newValues[5]) {
       $warningMsg.textContent = '핸드폰 번호를 입력해 주세요';
       return;
     }
@@ -231,66 +232,41 @@ $submitBtn.onclick = () => {
 };
 
 // close modal event
-
 $warningClose.onclick = e => {
   e.target.parentNode.parentNode.style.display = 'none';
 };
 
 // Delete Button event
+$nameCardList.onclick = e => {
+  const { id } = e.target.parentNode;
 
-$cardList.onclick = e => {
-  const {
-    id
-  } = e.target.parentNode;
-  if (!e.target.matches('.cardList > .namecard > img.deleteBtn')) return;
+  if (!e.target.matches('.cardList > .namecard > img.deleteBtn') && !e.target.matches('.favList > .namecard > img.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
-  render();
-};
-
-$favList.onclick = e => {
-  const {
-    id
-  } = e.target.parentNode;
-  if (!e.target.matches('.favList > .namecard > img.deleteBtn')) return;
   favCardList = favCardList.filter(card => card.id !== +id);
+
   render();
 };
 
 // favorite event
-
-const toFavList = target => {
-  if (!target.matches('.cardList > li > img.favoriteBtn')) return;
-
-  let id = target.parentNode.id;
+const favList = e => {
+  if (!e.target.matches('.cardList > li > img.favoriteBtn') && !e.target.matches('.favList > li > img.favoriteBtn')) return;
+  const { id } = e.target.parentNode;
 
   cardList = cardList.map(card => (card.id === +id ? {
     ...card,
     favorite: !card.favorite
   } : card));
 
-  render('id');
-};
-
-const fromFavList = target => {
-  if (!target.matches('.favList > li > img.favoriteBtn')) return;
-
-  let id = target.parentNode.id;
-
   favCardList = favCardList.map(card => (card.id === +id ? {
     ...card,
     favorite: !card.favorite
   } : card));
 
-  render('id');
+  render();
 };
 
-$cardList.addEventListener('click', ({
-  target
-}) => toFavList(target));
-
-$favList.addEventListener('click', ({
-  target
-}) => fromFavList(target));
+$cardList.addEventListener('click', e => favList(e));
+$favList.addEventListener('click', e => favList(e));
 
 
 // Sort Button event
@@ -302,7 +278,6 @@ $sortList.onclick = e => {
     cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
   }
   if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
-    console.log(e.target);
     cardList = cardList.sort((recent1, recent2) => ((recent1.id < recent2.id) ? 1 : recent1.id > recent2.id ? -1 : 0));
   }
   render();

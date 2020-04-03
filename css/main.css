@@ -131,6 +131,7 @@ body *, body *::before, body *::after {
 }
 .sortList > li {
   display: inline-block;
+  cursor: pointer;
 }
 
 /* card list */

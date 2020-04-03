@@ -11,6 +11,14 @@ const $sortRecent = document.querySelector('.sortRecent');
 
 const $favorite = document.querySelector('.favorite');
 
+const $newName = document.querySelector('.newName');
+const $newEmail = document.querySelector('.newEmail');
+const $newMobile = document.querySelector('.newMobile');
+
+const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+const checkMobile = /^\d{3}-\d{3,4}-\d{4}$/;
+const checkName = /../;
+
 const render = key => {
 
   let html = '';
@@ -18,7 +26,7 @@ const render = key => {
   const sortBy = key => {
     const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0)));
     const sortByElse = cardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0)));
-    key === 'id' ? sortById : sortByElse;
+    return key === 'id' ? sortById : sortByElse;
   };
 
   sortBy(key);
@@ -44,6 +52,7 @@ const render = key => {
   $cardList.innerHTML = html;
 };
 
+
 const getCardList = () => {
   cardList = [
     { id: 1, name: '이하은', company: '카카오 뱅크', division: '앱 개발팀', position: '대리', email: 'daidy@naver.com', mobile: '010-5067-5111', color: 'namecard color1', favorite: true, },
@@ -56,13 +65,22 @@ const getCardList = () => {
 
 window.onload = getCardList;
 
-const generateId = () => {
-  return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
-};
 
 const generateColor = () => {
   const colorNumber = generateId();
   return colorNumber % 4;
+};
+
+$newName.onblur = e => {
+  e.target.nextElementSibling.style.display = checkName.test(e.target.value) ? 'none' : 'block';
+};
+
+$newEmail.onblur = e => {
+  e.target.nextElementSibling.style.display = checkEmail.test(e.target.value) ? 'none' : 'block';
+};
+
+$newMobile.onblur = e => {
+  e.target.nextElementSibling.style.display = checkMobile.test(e.target.value) ? 'none' : 'block';
 };
 
 $submitBtn.onclick = e => {
@@ -70,27 +88,14 @@ $submitBtn.onclick = e => {
   let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
   let newValues = inputs.map(input => input.value.trim());
 
-  const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-  const checkMobile = /^\d{3}-\d{4}-\d{4}/;
-  const checkName = /../;
-
   if (newValues.filter(value => value.length === 0).length !== 0) {
     alert('빈칸을 채워주세요!');
     return;
-  };
+  }
 
-  // if (!checkName.test(newValues[0])) {
-  //   alert('이름 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkEmail.test(newValues[4])) {
-  //   alert('이메일 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkMobile.test(newValues[5])) {
-  //   alert('번호 형식을 지켜주세요!')
-  //   return;
-  // };
+  if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
 
-  let [name, company, division, position, email, mobile] = newValues;
+  const [name, company, division, position, email, mobile] = newValues;
 
   cardList = [...cardList, {
     id: generateId(),
@@ -106,7 +111,7 @@ $submitBtn.onclick = e => {
 
   render('id');
 
-  inputs.forEach(input => input.value = '');
+  inputs.forEach(input => { input.value = ''; });
 };
 
 // Delete Button event

@@ -31,7 +31,7 @@ const render = key => {
             <span class="cardPosition">${card.position}</span>
           </div>
           <i class="deleteBtn fas fa-times"></i>
-          <button class="favorite">★</button>
+          <i class="fas fa-star"></i>
         </li>`;
   });
 
@@ -59,17 +59,6 @@ $submitBtn.onclick = e => {
     return;
   };
 
-  // if (!checkName.test(newValues[0])) {
-  //   alert('이름 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkEmail.test(newValues[4])) {
-  //   alert('이메일 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkMobile.test(newValues[5])) {
-  //   alert('번호 형식을 지켜주세요!')
-  //   return;
-  // };
-
   let [name, company, division, position, email, mobile] = newValues;
 
   cardList = [...cardList, {
@@ -91,7 +80,9 @@ $submitBtn.onclick = e => {
 
 // Delete Button event
 $cardList.onclick = e => {
-  const { id } = e.target.parentNode;
+  const {
+    id
+  } = e.target.parentNode;
   if (!e.target.matches('.cardList > .namecard > i.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
   render();

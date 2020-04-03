@@ -39,14 +39,6 @@ const render = key => {
   cardList = isNotFav;
   favCardList = isFav;
 
-  const sortBy = key => {
-    const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0)));
-    const sortByElse = cardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0)));
-    return key === 'id' ? sortById : sortByElse;
-  };
-
-  sortBy(key);
-
   cardList.forEach(card => {
     html += `<li id="${card.id}" class="namecard color${card.color}">
           <div class="namecardInfo">
@@ -155,10 +147,10 @@ const getCardList = () => {
     mobile: '010-2535-4985',
     color: 'namecard color5',
     favorite: false,
-  }];
+  }].sort((a, b) => b.id - a.id);
 
   favCardList = [];
-  render();
+  render('id');
 };
 
 const generateId = () => {
@@ -219,7 +211,7 @@ $submitBtn.onclick = () => {
   if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
   const [name, company, division, position, email, mobile] = newValues;
 
-  cardList = [...cardList, {
+  cardList = [{
     id: generateId(),
     name,
     company,
@@ -229,7 +221,7 @@ $submitBtn.onclick = () => {
     mobile,
     favorite: false,
     color: generateColor()
-  }];
+  }, ...cardList];
 
   render('id');
 
@@ -310,7 +302,8 @@ $sortList.onclick = e => {
     cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
   }
   if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
-    cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
+    console.log(e.target);
+    cardList = cardList.sort((recent1, recent2) => ((recent1.id < recent2.id) ? 1 : recent1.id > recent2.id ? -1 : 0));
   }
   render();
 };

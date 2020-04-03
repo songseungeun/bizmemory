@@ -28,7 +28,6 @@ module.exports = {
     "arrow-parens": ["error", "as-needed"], // a => {}
     "no-restricted-syntax": [0, "ForOfStatement"],
     "no-param-reassign": ["error", { "props": false }],
-    "editor.tabSize": 2,
-    "emmet.variables": {"lang": "ko"}
   }
+  
 };

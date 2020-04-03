@@ -1,7 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+KR'); */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
-@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
 
 /* FONT STYLE */
 body {
@@ -115,31 +113,55 @@ body *, body *::before, body *::after {
 /* sort list */
 .sortWrapper {
   float: right;
-  width: 50%;
-  margin: 10px;
+  width: 100%;
+  margin: 20px;
 }
 .sortWrapper h3 {
-  float: left;
+  float: right;
   text-align: right;
-  width: 50%;
+  margin-right: 10px;
+  padding-top: 3px;
+  font-size: 18px;
+  color: rgb(181, 85, 85);
 }
+
 .sortList {
   float: right;
-  width: 50%;
+  /* width: 50%; */
   text-align: right;
-  font-size: 14px;
-  color: #666;
+  
 }
 .sortList > li {
   display: inline-block;
   cursor: pointer;
+  font-size: 15px;
+  padding: 3px 13px 7px 13px;
+  border-radius: 20px;
+  background-color: rgb(181, 85, 85);
+  color: #fff;
 }
-
+.sortList > li:hover {
+  background-color: rgb(213, 109, 109);
+}
+/* fav list */
+.favTitle {
+  margin: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  color: #999;
+}
+.favList {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
 /* card list */
 .cardList {
   width: 100%;
   clear: both;
   padding: 10px 15px;
+  border-top: 1px solid #ccc;
 }
 .namecard {
   position: relative;
@@ -229,27 +251,25 @@ body *, body *::before, body *::after {
   position: absolute;
   top: 0;
   right: 24px;
-  padding: 9px 10px 0 0;
-  font-size: 20px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  color: rgb(255, 255, 255);
+  margin: 8px 10px 8px 8px;
 }
 .deleteBtn {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 5px 10px 0 0;
-  font-size: 25px;
+  width: 18px;
+  margin: 11px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  color: rgba(255, 255, 255, .5);
+  opacity: 0.7;
 }
 
 .deleteBtn:hover {
-  color: rgba(255, 255, 255, .9);
+  opacity: 0.9;
 }
 /* Blank */
 .blankMsg {

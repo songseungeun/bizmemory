@@ -19,7 +19,6 @@ const checkMobile = /^\d{3}-\d{3,4}-\d{4}$/;
 const checkName = /../;
 
 const render = key => {
-
   let html = '';
   let favHtml = '';
   const isFav = [...cardList.filter(card => card.favorite), ...favCardList.filter(card => card.favorite)];
@@ -78,54 +77,51 @@ const render = key => {
 
 const getCardList = () => {
   cardList = [{
-      id: 1,
-      name: '이하은',
-      company: '카카오 뱅크',
-      division: '앱 개발팀',
-      position: '대리',
-      email: 'daidy@naver.com',
-      mobile: '010-5067-5111',
-      color: 'namecard color1',
-      favorite: true,
-    },
-    {
-      id: 2,
-      name: '김우정',
-      company: '토스',
-      division: '인재 개발팀',
-      position: '선입',
-      email: 'tj123y@naver.com',
-      mobile: '010-2344-3453',
-      color: 'namecard color2',
-      favorite: false,
-    },
-  ];
+    id: 1,
+    name: '이하은',
+    company: '카카오뱅크',
+    division: '앱 개발팀',
+    position: '대리',
+    email: 'daidy@naver.com',
+    mobile: '010-5067-5111',
+    color: 'namecard color1',
+    favorite: true,
+  },
+  {
+    id: 2,
+    name: '김우정',
+    company: '토스',
+    division: '인재 개발팀',
+    position: '선임',
+    email: 'tj123y@naver.com',
+    mobile: '010-2344-3453',
+    color: 'namecard color2',
+    favorite: false,
+  }];
 
   favCardList = [{
-      id: 3,
-      name: '송승은',
-      company: '쿠팡',
-      division: '경영지원팀',
-      position: '과장',
-      email: 'wj456@naver.com',
-      mobile: '010-2535-4985',
-      color: 'namecard color3',
-      favorite: true,
-    },
-    {
-      id: 4,
-      name: '김태진',
-      company: '에어비앤비',
-      division: 'UX디자인팀',
-      position: '책임',
-      email: 'se7890@naver.com',
-      mobile: '010-2355-2455',
-      color: 'namecard color4',
-      favorite: true,
-    },
-  ]
+    id: 3,
+    name: '송승은',
+    company: '라인',
+    division: '경영지원팀',
+    position: '과장',
+    email: 'wj456@naver.com',
+    mobile: '010-2535-4985',
+    color: 'namecard color3',
+    favorite: true,
+  },
+  {
+    id: 4,
+    name: '김태진',
+    company: '에어비앤비',
+    division: 'UX디자인팀',
+    position: '책임',
+    email: 'se7890@naver.com',
+    mobile: '010-2355-2455',
+    color: 'namecard color4',
+    favorite: true,
+  }];
   render();
-
 };
 
 const generateId = () => {
@@ -199,7 +195,7 @@ $favList.onclick = e => {
   const {
     id
   } = e.target.parentNode;
-  if (!e.target.matches('.favList > .namecard > i.deleteBtn')) return;
+  if (!e.target.matches('.favList > .namecard > img.deleteBtn')) return;
   favCardList = favCardList.filter(card => card.id !== +id);
   render();
 };

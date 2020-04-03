@@ -14,6 +14,10 @@ const $newName = document.querySelector('.newName');
 const $newEmail = document.querySelector('.newEmail');
 const $newMobile = document.querySelector('.newMobile');
 
+const $modal = document.querySelector('.modal');
+const $warningMsg = document.querySelector('.warningMsg');
+const $warningClose = document.querySelector('.warningClose');
+
 const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 const checkMobile = /^\d{3}-\d{3,4}-\d{4}$/;
 const checkName = /../;
@@ -91,8 +95,13 @@ $submitBtn.onclick = e => {
   let newValues = inputs.map(input => input.value.trim());
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
-    alert('빈칸을 채워주세요!');
-    return;
+    // alert('빈칸을 채워주세요!');
+    // newValues.filter(value => {
+    //   $warningMsg.textContent = `${inputs}를 입력해 주세요`;
+    // });
+
+    // $modal.style.display = 'block';
+    // return;
   }
 
   if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
@@ -113,6 +122,12 @@ $submitBtn.onclick = e => {
   render('id');
 
   inputs.forEach(input => { input.value = ''; });
+};
+
+// close modal event
+
+$warningClose.onclick = e => {
+  e.target.parentNode.parentNode.style.display = 'none';
 };
 
 // Delete Button event

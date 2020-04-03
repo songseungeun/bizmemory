@@ -1,0 +1,211 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+KR'); */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+
+/* FONT STYLE */
+body {
+  /* font-family: 'Roboto', 'Noto Sans KR', sans-serif; */
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
+}
+
+/* BORDER-BOX */
+body *, body *::before, body *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* MODULE */
+.clearfix::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+h1 {
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  color: #333;
+}
+h2 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.newInfo {
+  width: 300px;
+  background-color: #fff;
+  float: left;
+  padding: 25px;
+  margin: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.037);
+  z-index: 99;
+  border-radius: 10px;
+}
+.newInfo input, .newInfo button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
+}
+.newInfo input {
+  border: 0px;
+  background-color: transparent;
+  border-bottom: 1.3px solid #333;
+  padding-bottom: 10px;
+  font-weight: 100;
+  font-size: 20px;
+}
+.newInfo button {
+  background-color: #2b313f;
+  color: #fff;
+  border: 1px solid #2b313f;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* name card list */
+.namecardList {
+  width: calc(100% - 340px);
+  min-height: 100%;
+  background-color: #f4f4f4;
+  float: right;
+  padding: 10px;
+}
+
+/* sort list */
+.sortWrapper {
+  float: right;
+  width: 50%;
+  margin: 10px;
+}
+.sortWrapper h3 {
+  float: left;
+  text-align: right;
+  width: 50%;
+}
+.sortList {
+  float: right;
+  width: 50%;
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+}
+.sortList > li {
+  display: inline-block;
+}
+
+/* card list */
+.cardList {
+  width: 100%;
+  clear: both;
+  padding: 10px 15px;
+}
+.namecard {
+  position: relative;
+  padding: 20px;
+  width: 350px;
+  height: 180px;
+  background-color: #d3d3d3;
+  margin: 10px 10px 0 0;
+  float: left;
+  box-shadow: 3px 3px 5px rgba(160, 146, 146, 0.18);
+  border-radius: 5px;
+}
+/* NAMECARD COLOR */
+.color1 {
+  background: rgb(232, 225, 216);
+  color: rgb(51, 51, 57);
+}
+.color1 .cardDivision,
+.color1 .cardPosition {
+  border: 1px solid rgb(51, 51, 57);
+}
+.color2 {
+  background: rgb(93, 118, 94);
+  color: rgb(223, 175, 149);
+}
+.color2 .cardDivision,
+.color2 .cardPosition {
+  border: 1px solid rgb(223, 175, 149);
+}
+.color3 {
+  background: rgb(199, 211, 228);
+  color: rgb(181, 85, 85);
+}
+.color3 .cardDivision,
+.color3 .cardPosition {
+  border: 1px solid rgb(181, 85, 85);
+}
+.color4 {
+  background: rgb(223, 198, 185);
+  color: rgb(61, 69, 150);
+}
+.color4 .cardDivision,
+.color4 .cardPosition {
+  border: 1px solid rgb(61, 69, 150);
+}
+
+
+
+.namecard span {
+  display: block;
+  line-height: 1.4;
+}
+
+.namecardInfo {
+  float: left;
+}
+
+.cardName {
+  font-size: 35px;
+  font-weight: 600;
+}
+.cardEmail {
+  font-size: 13px;
+  font-weight: 200;
+}
+.cardMobile {
+  margin-top: 30px;
+  font-size: 25px;
+  font-weight: 200;
+}
+
+.namecardCompany {
+  float: right;
+  margin: 10px 10px 0 0;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.cardDivision, 
+.cardPosition {
+  font-size: 11px;
+  margin: 5px 0;
+  padding: 3px 7px;
+  border-radius: 20px;
+  display: inline;
+}
+.deleteBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px 0 0;
+  font-size: 25px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .5);
+}
+
+.deleteBtn:hover {
+  color: rgba(255, 255, 255, .9);
+}

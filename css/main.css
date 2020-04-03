@@ -164,7 +164,7 @@ body *, body *::before, body *::after {
 .favList {
   max-width: 1020px;
   width: 100%;
-  padding: 10px 15px;
+  padding: 10px 15px 20px 15px;
   margin-bottom: 15px;
   margin: 0 auto;
 }

@@ -99,7 +99,7 @@ const getCardList = () => {
     email: 'daidy@naver.com',
     mobile: '010-5067-5111',
     color: 'namecard color1',
-    favorite: true,
+    favorite: false,
   },
   {
     id: 2,
@@ -111,9 +111,8 @@ const getCardList = () => {
     mobile: '010-2344-3453',
     color: 'namecard color2',
     favorite: false,
-  }];
-
-  favCardList = [{
+  },
+  {
     id: 3,
     name: '송승은',
     company: '라인',
@@ -122,7 +121,7 @@ const getCardList = () => {
     email: 'wj456@naver.com',
     mobile: '010-2535-4985',
     color: 'namecard color3',
-    favorite: true,
+    favorite: false,
   },
   {
     id: 4,
@@ -133,8 +132,32 @@ const getCardList = () => {
     email: 'se7890@naver.com',
     mobile: '010-2355-2455',
     color: 'namecard color4',
-    favorite: true,
+    favorite: false,
+  },
+  {
+    id: 5,
+    name: '이웅모',
+    company: '라인',
+    division: '경영지원팀',
+    position: '과장',
+    email: 'wj456@naver.com',
+    mobile: '010-2535-4985',
+    color: 'namecard color3',
+    favorite: false,
+  },
+  {
+    id: 6,
+    name: '김데레사',
+    company: '에어비앤비',
+    division: 'UX디자인팀',
+    position: '책임',
+    email: 'se7890@naver.com',
+    mobile: '010-2355-2455',
+    color: 'namecard color4',
+    favorite: false,
   }];
+
+  favCardList = [];
   render();
 };
 

@@ -147,7 +147,7 @@ const getCardList = () => {
   }].sort((card1, card2) => card2.id - card1.id);
 
   favCardList = [];
-  render();
+  render('id');
 };
 
 const generateId = () => {
@@ -278,7 +278,6 @@ $sortList.onclick = e => {
     cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
   }
   if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
-    console.log(e.target);
     cardList = cardList.sort((recent1, recent2) => ((recent1.id < recent2.id) ? 1 : recent1.id > recent2.id ? -1 : 0));
   }
   render();

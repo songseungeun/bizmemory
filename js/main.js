@@ -40,7 +40,7 @@ const render = key => {
   favCardList = isFav;
 
   const sortBy = key => {
-    const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0)));
+    const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0)));
     const sortByElse = cardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0)));
     return key === 'id' ? sortById : sortByElse;
   };
@@ -158,7 +158,7 @@ const getCardList = () => {
   }];
 
   favCardList = [];
-  render();
+  render('id');
 };
 
 const generateId = () => {
@@ -261,7 +261,7 @@ $favList.onclick = e => {
   } = e.target.parentNode;
   if (!e.target.matches('.favList > .namecard > img.deleteBtn')) return;
   favCardList = favCardList.filter(card => card.id !== +id);
-  render();
+  render('id');
 };
 
 // favorite event

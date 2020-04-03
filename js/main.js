@@ -47,8 +47,8 @@ const render = key => {
             <span class="cardDivision">${card.division}</span>
             <span class="cardPosition">${card.position}</span>
           </div>
-          <i class="favoriteBtn far fa-star"></i>
-          <i class="deleteBtn fas fa-times"></i>
+          <img class="favoriteBtn fas" src="./img/fav-icon.png">
+          <img class="deleteBtn" src="./img/close-btn.png">
         </li>`;
   });
 
@@ -64,8 +64,8 @@ const render = key => {
             <span class="cardDivision">${card.division}</span>
             <span class="cardPosition">${card.position}</span>
           </div>
-          <i class="favoriteBtn fas fa-star"></i>
-          <i class="deleteBtn fas fa-times"></i>
+          <img class="favoriteBtn far" src="./img/fav-icon-on.png">
+          <img class="deleteBtn" src="./img/close-btn.png">
         </li>`;
   });
 
@@ -147,7 +147,7 @@ $cardList.onclick = e => {
   const {
     id
   } = e.target.parentNode;
-  if (!e.target.matches('.cardList > .namecard > i.deleteBtn')) return;
+  if (!e.target.matches('.cardList > .namecard > img.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
   render();
 };
@@ -155,7 +155,7 @@ $cardList.onclick = e => {
 // favorite event
 
 const toFavList = target => {
-  if (!target.matches('.cardList > li > i.favoriteBtn')) return;
+  if (!target.matches('.cardList > li > img.favoriteBtn')) return;
 
   let id = target.parentNode.id;
 
@@ -168,7 +168,7 @@ const toFavList = target => {
 };
 
 const fromFavList = target => {
-  if (!target.matches('.favList > li > i.favoriteBtn')) return;
+  if (!target.matches('.favList > li > img.favoriteBtn')) return;
 
   let id = target.parentNode.id;
 

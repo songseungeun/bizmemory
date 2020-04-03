@@ -1,7 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+KR'); */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
-@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
 
 /* FONT STYLE */
 body {
@@ -253,27 +251,25 @@ body *, body *::before, body *::after {
   position: absolute;
   top: 0;
   right: 24px;
-  padding: 9px 10px 0 0;
-  font-size: 20px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  color: rgb(255, 255, 255);
+  margin: 8px 10px 8px 8px;
 }
 .deleteBtn {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 5px 10px 0 0;
-  font-size: 25px;
+  width: 18px;
+  margin: 11px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  color: rgba(255, 255, 255, .5);
+  opacity: 0.7;
 }
 
 .deleteBtn:hover {
-  color: rgba(255, 255, 255, .9);
+  opacity: 0.9;
 }
 /* Blank */
 .blankMsg {

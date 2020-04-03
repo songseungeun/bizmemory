@@ -16,17 +16,6 @@ $submitBtn.onclick = e => {
     return;
   };
 
-  // if (!checkName.test(newValues[0])) {
-  //   alert('이름 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkEmail.test(newValues[4])) {
-  //   alert('이메일 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkMobile.test(newValues[5])) {
-  //   alert('번호 형식을 지켜주세요!')
-  //   return;
-  // };
-
   let [name, company, division, position, email, mobile] = newValues;
 
   cardList = [...cardList, {

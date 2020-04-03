@@ -121,7 +121,6 @@ const favoriteList = target => {
     favorite: !card.favorite
   } : card));
 
-  console.log(isFav)
   render('id');
 };
 

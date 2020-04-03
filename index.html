@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIZMEMORY</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./main.css">
+  <script src="./main.js" defer></script>
+</head>
+<body>
+
+  <div class="wrapper clearfix">
+    
+    <!-- register -->
+    <div class="newInfo">
+      <h2>Register</h2>
+      <input type="text" class="newName" placeholder="Name">
+      <input type="text" class="newCompany" placeholder="Company">
+      <input type="text" class="newDivision" placeholder="Company Devision">
+      <input type="text" class="newPosition" placeholder="Company Position">
+      <input type="text" class="newEmail" placeholder="E-mail">
+      <input type="text" class="newMobile" placeholder="Mobile Number">
+      <button class="submitBtn">Add bizCard</button>
+    </div>
+
+    <!-- name card -->
+    <div class="namecardList">
+      <h1>Biz memory</h1>
+
+      <!-- sort -->
+      <div class="sortWrapper">
+        <h3>sort by : </h3>
+        <ul class="sortList">
+          <li class="sortName">NAME</li>
+          <li class="sortCompany">COMPANY</li>
+          <li class="sortRecent">RECENT</li>
+        </ul>
+      </div>
+
+      <!-- card list -->
+      <ul class="cardList clearfix">
+
+        <!-- card start -->
+        <li class="namecard color1">
+          <div class="namecardInfo">
+            <span class="cardName">나길동</span>
+            <span class="cardMobile">010-1354-4645</span>
+            <span class="cardEmail">abd@kakaobank.co.kr</span>
+          </div>
+          <div class="namecardCompany">
+            <span class="cardCompany">카카오뱅크</span>
+            <span class="cardDivision">UX디자인팀</span>
+            <span class="cardPosition">책임</span>
+          </div>
+          <i class="deleteBtn fas fa-times"></i>
+        </li>
+        <!-- card end -->
+        <!-- card start -->
+        <li class="namecard color2">
+          <div class="namecardInfo">
+            <span class="cardName">가길동</span>
+            <span class="cardMobile">010-1354-4645</span>
+            <span class="cardEmail">abd@kakaobank.co.kr</span>
+          </div>
+          <div class="namecardCompany">
+            <span class="cardCompany">라인</span>
+            <span class="cardDivision">앱개발팀</span>
+            <span class="cardPosition">선임</span>
+          </div>
+          <i class="deleteBtn fas fa-times"></i>
+        </li>
+        <!-- card end -->
+        <!-- card start -->
+        <li class="namecard color3">
+          <div class="namecardInfo">
+            <span class="cardName">라길동</span>
+            <span class="cardMobile">010-1354-4645</span>
+            <span class="cardEmail">abd@kakaobank.co.kr</span>
+          </div>
+          <div class="namecardCompany">
+            <span class="cardCompany">쿠팡</span>
+            <span class="cardDivision">경영지원팀</span>
+            <span class="cardPosition">대리</span>
+          </div>
+          <i class="deleteBtn fas fa-times"></i>
+        </li>
+        <!-- card end -->
+        <!-- card start -->
+        <li class="namecard color4">
+          <div class="namecardInfo">
+            <span class="cardName">하길동</span>
+            <span class="cardMobile">010-1354-4645</span>
+            <span class="cardEmail">abd@kakaobank.co.kr</span>
+          </div>
+          <div class="namecardCompany">
+            <span class="cardCompany">에어비앤비</span>
+            <span class="cardDivision">인재개발팀</span>
+            <span class="cardPosition">과장</span>
+          </div>
+          <i class="deleteBtn fas fa-times"></i>
+        </li>
+        <!-- card end -->
+        
+
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- copyright <footer>
+    
+  </footer> -->
+</body>
+</html>

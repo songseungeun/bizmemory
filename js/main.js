@@ -14,13 +14,21 @@ const $newName = document.querySelector('.newName');
 const $newEmail = document.querySelector('.newEmail');
 const $newMobile = document.querySelector('.newMobile');
 
+
+const $blankMsg = document.querySelector('.blankMsg');
+
 const $modal = document.querySelector('.modal');
 const $warningMsg = document.querySelector('.warningMsg');
 const $warningClose = document.querySelector('.warningClose');
 
+
 const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 const checkMobile = /^\d{3}-\d{3,4}-\d{4}$/;
 const checkName = /../;
+
+const blankMsg = () => {
+  $blankMsg.style.display = (cardList.length || favCardList.length) ? 'none' : 'block';
+};
 
 const render = key => {
   let html = '';
@@ -77,6 +85,8 @@ const render = key => {
 
   $cardList.innerHTML = html;
   $favList.innerHTML = favHtml;
+
+  blankMsg();
 };
 
 const getCardList = () => {

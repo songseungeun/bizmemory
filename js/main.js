@@ -43,15 +43,13 @@ const render = key => {
             <span class="cardDivision">${card.division}</span>
             <span class="cardPosition">${card.position}</span>
           </div>
-          <i class="favoriteBtn far fa-star"></i>
-          <!-- <i class="fas fa-star"></i>  -->
+          <i class="favoriteBtn ${card.favorite ? 'fas' : 'far'} fa-star"></i>
           <i class="deleteBtn fas fa-times"></i>
         </li>`;
   });
 
   $cardList.innerHTML = html;
 };
-
 
 const getCardList = () => {
   cardList = [
@@ -61,6 +59,11 @@ const getCardList = () => {
     { id: 4, name: '김태진', company: '에어비앤비', division: 'UX디자인팀', position: '책임', email: 'se7890@naver.com', mobile: '010-2355-2455', color: 'namecard color4', favorite: true, },
   ];
   render();
+
+};
+
+const generateId = () => {
+  return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
 };
 
 window.onload = getCardList;
@@ -94,8 +97,8 @@ $submitBtn.onclick = e => {
   }
 
   if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
-
   const [name, company, division, position, email, mobile] = newValues;
+
 
   cardList = [...cardList, {
     id: generateId(),
@@ -117,8 +120,30 @@ $submitBtn.onclick = e => {
 // Delete Button event
 
 $cardList.onclick = e => {
-  const { id } = e.target.parentNode;
+  const {
+    id
+  } = e.target.parentNode;
   if (!e.target.matches('.cardList > .namecard > i.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
   render();
 };
+
+// favorite event
+
+const favoriteList = target => {
+  if (!target.matches('.cardList > li > i.favoriteBtn')) return;
+
+  let id = target.parentNode.id;
+  let isFav = cardList.filter(card => card.id === +id)[0].favorite;
+
+  cardList = cardList.map(card => (card.id === +id ? {
+    ...card,
+    favorite: !card.favorite
+  } : card));
+
+  render('id');
+};
+
+$cardList.addEventListener('click', ({
+  target
+}) => favoriteList(target));

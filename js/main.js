@@ -1,4 +1,5 @@
 let cardList = [];
+let favCardList = [];
 
 const $newInfo = document.querySelector('.newInfo');
 const $submitBtn = document.querySelector('.submitBtn');
@@ -6,7 +7,7 @@ const $submitBtn = document.querySelector('.submitBtn');
 const $cardList = document.querySelector('.cardList');
 const $sortList = document.querySelector('.sortList');
 
-const $favorite = document.querySelector('.favorite');
+const $favList = document.querySelector('.favList');
 
 const $newName = document.querySelector('.newName');
 const $newEmail = document.querySelector('.newEmail');
@@ -19,6 +20,12 @@ const checkName = /../;
 const render = key => {
 
   let html = '';
+  let favHtml = '';
+  const isFav = [... cardList.filter(card => card.favorite), ...favCardList.filter(card => card.favorite)];
+  const isNotFav = [...cardList.filter(card => !card.favorite), ...favCardList.filter(card => !card.favorite)];
+
+  cardList = isNotFav;
+  favCardList = isFav;
 
   const sortBy = key => {
     const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0)));
@@ -40,21 +47,42 @@ const render = key => {
             <span class="cardDivision">${card.division}</span>
             <span class="cardPosition">${card.position}</span>
           </div>
-          <i class="favoriteBtn ${card.favorite ? 'fas' : 'far'} fa-star"></i>
+          <i class="favoriteBtn far fa-star"></i>
+          <i class="deleteBtn fas fa-times"></i>
+        </li>`;
+  });
+
+  favCardList.forEach(card => {
+    favHtml += `<li id="${card.id}" class="namecard color${card.color}">
+          <div class="namecardInfo">
+            <span class="cardName">${card.name}</span>
+            <span class="cardMobile">${card.mobile}</span>
+            <span class="cardEmail">${card.email}</span>
+          </div>
+          <div class="namecardCompany">
+            <span class="cardCompany">${card.company}</span>
+            <span class="cardDivision">${card.division}</span>
+            <span class="cardPosition">${card.position}</span>
+          </div>
+          <i class="favoriteBtn fas fa-star"></i>
           <i class="deleteBtn fas fa-times"></i>
         </li>`;
   });
 
   $cardList.innerHTML = html;
+  $favList.innerHTML = favHtml;
 };
 
 const getCardList = () => {
   cardList = [
     { id: 1, name: '이하은', company: '카카오 뱅크', division: '앱 개발팀', position: '대리', email: 'daidy@naver.com', mobile: '010-5067-5111', color: 'namecard color1', favorite: true, },
     { id: 2, name: '김우정', company: '토스', division: '인재 개발팀', position: '선입', email: 'tj123y@naver.com', mobile: '010-2344-3453', color: 'namecard color2', favorite: false, },
-    { id: 3, name: '송승은', company: '쿠팡', division: '경영지원팀', position: '과장', email: 'wj456@naver.com', mobile: '010-2535-4985', color: 'namecard color3', favorite: false, },
+    ];
+
+  favCardList = [
+    { id: 3, name: '송승은', company: '쿠팡', division: '경영지원팀', position: '과장', email: 'wj456@naver.com', mobile: '010-2535-4985', color: 'namecard color3', favorite: true, },
     { id: 4, name: '김태진', company: '에어비앤비', division: 'UX디자인팀', position: '책임', email: 'se7890@naver.com', mobile: '010-2355-2455', color: 'namecard color4', favorite: true, },
-  ];
+    ]
   render();
 
 };
@@ -83,7 +111,7 @@ $newMobile.onblur = e => {
   e.target.nextElementSibling.style.display = checkMobile.test(e.target.value) ? 'none' : 'block';
 };
 
-$submitBtn.onclick = e => {
+$submitBtn.onclick = () => {
 
   let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
   let newValues = inputs.map(input => input.value.trim());
@@ -126,11 +154,10 @@ $cardList.onclick = e => {
 
 // favorite event
 
-const favoriteList = target => {
+const toFavList = target => {
   if (!target.matches('.cardList > li > i.favoriteBtn')) return;
 
   let id = target.parentNode.id;
-  let isFav = cardList.filter(card => card.id === +id)[0].favorite;
 
   cardList = cardList.map(card => (card.id === +id ? {
     ...card,
@@ -140,9 +167,27 @@ const favoriteList = target => {
   render('id');
 };
 
+const fromFavList = target => {
+  if (!target.matches('.favList > li > i.favoriteBtn')) return;
+
+  let id = target.parentNode.id;
+
+  favCardList = favCardList.map(card => (card.id === +id ? {
+    ...card,
+    favorite: !card.favorite
+  } : card));
+
+  render('id');
+};
+
 $cardList.addEventListener('click', ({
   target
-}) => favoriteList(target));
+}) => toFavList(target));
+
+$favList.addEventListener('click', ({
+  target
+}) => fromFavList(target));
+
 
 // Sort Button event
 $sortList.onclick = e => {
@@ -156,4 +201,4 @@ $sortList.onclick = e => {
     cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
   }
   render();
-};
+

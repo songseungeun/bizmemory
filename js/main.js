@@ -179,8 +179,8 @@ $newMobile.onblur = e => {
 
 $submitBtn.onclick = () => {
 
-  let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
-  let newValues = inputs.map(input => input.value.trim());
+  const inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
+  const newValues = inputs.map(input => input.value.trim());
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
 
@@ -239,18 +239,14 @@ $warningClose.onclick = e => {
 // Delete Button event
 
 $cardList.onclick = e => {
-  const {
-    id
-  } = e.target.parentNode;
+  const { id } = e.target.parentNode;
   if (!e.target.matches('.cardList > .namecard > img.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
   render();
 };
 
 $favList.onclick = e => {
-  const {
-    id
-  } = e.target.parentNode;
+  const { id } = e.target.parentNode;
   if (!e.target.matches('.favList > .namecard > img.deleteBtn')) return;
   favCardList = favCardList.filter(card => card.id !== +id);
   render();
@@ -261,7 +257,7 @@ $favList.onclick = e => {
 const toFavList = target => {
   if (!target.matches('.cardList > li > img.favoriteBtn')) return;
 
-  let id = target.parentNode.id;
+  const { id } = target.parentNode;
 
   cardList = cardList.map(card => (card.id === +id ? {
     ...card,
@@ -274,7 +270,7 @@ const toFavList = target => {
 const fromFavList = target => {
   if (!target.matches('.favList > li > img.favoriteBtn')) return;
 
-  let id = target.parentNode.id;
+  const { id } = target.parentNode;
 
   favCardList = favCardList.map(card => (card.id === +id ? {
     ...card,
@@ -292,8 +288,8 @@ $favList.addEventListener('click', ({
   target
 }) => fromFavList(target));
 
-
 // Sort Button event
+
 $sortList.onclick = e => {
   if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
     cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));

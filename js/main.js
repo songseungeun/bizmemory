@@ -11,6 +11,14 @@ const $sortRecent = document.querySelector('.sortRecent');
 
 const $favorite = document.querySelector('.favorite');
 
+const $newName = document.querySelector('.newName');
+const $newEmail = document.querySelector('.newEmail');
+const $newMobile = document.querySelector('.newMobile');
+
+const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+const checkMobile = /^\d{3}-\d{3,4}-\d{4}$/;
+const checkName = /../;
+
 const render = key => {
 
   let html = '';
@@ -18,7 +26,7 @@ const render = key => {
   const sortBy = key => {
     const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0)));
     const sortByElse = cardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0)));
-    key === 'id' ? sortById : sortByElse;
+    return key === 'id' ? sortById : sortByElse;
   };
 
   sortBy(key);
@@ -51,17 +59,31 @@ const getCardList = () => {
     { id: 4, name: '김태진', company: '에어비앤비', division: 'UX디자인팀', position: '책임', email: 'se7890@naver.com', mobile: '010-2355-2455', color: 'namecard color4', favorite: true, },
   ];
   render();
-};
 
-window.onload = getCardList;
+};
 
 const generateId = () => {
   return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
 };
 
+window.onload = getCardList;
+
+
 const generateColor = () => {
   const colorNumber = generateId();
   return colorNumber % 4;
+};
+
+$newName.onblur = e => {
+  e.target.nextElementSibling.style.display = checkName.test(e.target.value) ? 'none' : 'block';
+};
+
+$newEmail.onblur = e => {
+  e.target.nextElementSibling.style.display = checkEmail.test(e.target.value) ? 'none' : 'block';
+};
+
+$newMobile.onblur = e => {
+  e.target.nextElementSibling.style.display = checkMobile.test(e.target.value) ? 'none' : 'block';
 };
 
 $submitBtn.onclick = e => {
@@ -69,16 +91,14 @@ $submitBtn.onclick = e => {
   let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
   let newValues = inputs.map(input => input.value.trim());
 
-  const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-  const checkMobile = /^\d{3}-\d{4}-\d{4}/;
-  const checkName = /../;
-
   if (newValues.filter(value => value.length === 0).length !== 0) {
     alert('빈칸을 채워주세요!');
     return;
-  };
+  }
 
-  let [name, company, division, position, email, mobile] = newValues;
+  if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
+  const [name, company, division, position, email, mobile] = newValues;
+
 
   cardList = [...cardList, {
     id: generateId(),
@@ -94,7 +114,7 @@ $submitBtn.onclick = e => {
 
   render('id');
 
-  inputs.forEach(input => input.value = '');
+  inputs.forEach(input => { input.value = ''; });
 };
 
 // Delete Button event

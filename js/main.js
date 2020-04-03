@@ -1,12 +1,10 @@
-// State
 let cardList = [];
 let favCardList = [];
-
-const $cardList = document.querySelector('.cardList');
 
 const $newInfo = document.querySelector('.newInfo');
 const $submitBtn = document.querySelector('.submitBtn');
 
+const $cardList = document.querySelector('.cardList');
 const $sortList = document.querySelector('.sortList');
 
 const $favList = document.querySelector('.favList');
@@ -154,20 +152,6 @@ $cardList.onclick = e => {
   render();
 };
 
-// Sort Button event
-$sortList.onclick = e => {
-  if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
-    cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));
-  }
-  if (e.target.matches('.sortWrapper > .sortList > .sortCompany')) {
-    cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
-  }
-  if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
-    cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
-  }
-  render();
-};
-
 // favorite event
 
 const toFavList = target => {
@@ -203,3 +187,18 @@ $cardList.addEventListener('click', ({
 $favList.addEventListener('click', ({
   target
 }) => fromFavList(target));
+
+
+// Sort Button event
+$sortList.onclick = e => {
+  if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
+    cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));
+  }
+  if (e.target.matches('.sortWrapper > .sortList > .sortCompany')) {
+    cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
+  }
+  if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
+    cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
+  }
+  render();
+

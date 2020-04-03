@@ -1,13 +1,18 @@
+// State
 let cardList = [];
 
 const $newInfo = document.querySelector('.newInfo');
 const $cardList = document.querySelector('.cardList');
 const $submitBtn = document.querySelector('.submitBtn');
+
+const $sortList = document.querySelector('.sortList');
 const $sortName = document.querySelector('.sortName');
 const $sortCompany = document.querySelector('.sortCompany');
 const $sortRecent = document.querySelector('.sortRecent');
+
 const $favorite = document.querySelector('.favorite');
 
+// Browser Rendering
 const render = key => {
   let html = '';
   const sortBy = key => {
@@ -57,18 +62,7 @@ $submitBtn.onclick = e => {
   if (newValues.filter(value => value.length === 0).length !== 0) {
     alert('빈칸을 채워주세요!');
     return;
-  };
-
-  // if (!checkName.test(newValues[0])) {
-  //   alert('이름 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkEmail.test(newValues[4])) {
-  //   alert('이메일 형식을 지켜주세요!')
-  //   return;
-  // } else if (!checkMobile.test(newValues[5])) {
-  //   alert('번호 형식을 지켜주세요!')
-  //   return;
-  // };
+  }
 
   let [name, company, division, position, email, mobile] = newValues;
 
@@ -94,5 +88,19 @@ $cardList.onclick = e => {
   const { id } = e.target.parentNode;
   if (!e.target.matches('.cardList > .namecard > i.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
+  render();
+};
+
+// Sort Button event
+$sortList.onclick = e => {
+  if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
+    cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));
+  }
+  if (e.target.matches('.sortWrapper > .sortList > .sortCompany')) {
+    cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
+  }
+  if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
+    cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
+  }
   render();
 };

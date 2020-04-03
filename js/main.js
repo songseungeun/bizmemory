@@ -80,13 +80,13 @@ $submitBtn.onclick = e => {
   }
 
   if (!checkName.test(newValues[0])) {
-    alert('이름을 2자 이상 입력해주세요')
+    alert('이름을 2자 이상 입력해주세요');
     return;
   } if (!checkEmail.test(newValues[4])) {
-    alert('이메일을 형식에 맞게 입력해주세요.')
+    alert('이메일을 형식에 맞게 입력해주세요.');
     return;
   } if (!checkMobile.test(newValues[5])) {
-    alert('핸드폰번호를 형식에 맞게 입력해주세요.')
+    alert('핸드폰번호를 형식에 맞게 입력해주세요.');
     return;
   }
 
@@ -106,7 +106,7 @@ $submitBtn.onclick = e => {
 
   render('id');
 
-  inputs.forEach(input => input.value = '');
+  inputs.forEach(input => { input.value = ''; });
 };
 
 // Delete Button event

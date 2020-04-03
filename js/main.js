@@ -46,9 +46,7 @@ const render = key => {
   $cardList.innerHTML = html;
 };
 
-const generateId = () => {
-  return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
-};
+const generateId = () => (cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1);
 
 const generateColor = () => {
   let colorNumber = generateId();
@@ -70,27 +68,19 @@ $newMobile.onblur = e => {
 $submitBtn.onclick = e => {
   let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
   let newValues = inputs.map(input => input.value.trim());
-  const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-  const checkMobile = /^\d{3}-\d{4}-\d{4}/;
-  const checkName = /../;
+
+  // const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+  // const checkMobile = /^\d{3}-\d{4}-\d{4}/;
+  // const checkName = /../;
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
     alert('빈칸을 채워주세요!');
     return;
   }
 
-  if (!checkName.test(newValues[0])) {
-    alert('이름을 2자 이상 입력해주세요');
-    return;
-  } if (!checkEmail.test(newValues[4])) {
-    alert('이메일을 형식에 맞게 입력해주세요.');
-    return;
-  } if (!checkMobile.test(newValues[5])) {
-    alert('핸드폰번호를 형식에 맞게 입력해주세요.');
-    return;
-  }
+  if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
 
-  let [name, company, division, position, email, mobile] = newValues;
+  const [name, company, division, position, email, mobile] = newValues;
 
   cardList = [...cardList, {
     id: generateId(),

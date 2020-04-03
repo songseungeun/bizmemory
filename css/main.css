@@ -273,6 +273,7 @@ body *, body *::before, body *::after {
 }
 /* Blank */
 .blankMsg {
+  display: none;
   position: absolute;
   top: 180px;
   left: calc(50% - 200px);

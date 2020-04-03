@@ -201,4 +201,4 @@ $sortList.onclick = e => {
     cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
   }
   render();
-
+}

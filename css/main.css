@@ -115,31 +115,55 @@ body *, body *::before, body *::after {
 /* sort list */
 .sortWrapper {
   float: right;
-  width: 50%;
-  margin: 10px;
+  width: 100%;
+  margin: 20px;
 }
 .sortWrapper h3 {
-  float: left;
+  float: right;
   text-align: right;
-  width: 50%;
+  margin-right: 10px;
+  padding-top: 3px;
+  font-size: 18px;
+  color: rgb(181, 85, 85);
 }
+
 .sortList {
   float: right;
-  width: 50%;
+  /* width: 50%; */
   text-align: right;
-  font-size: 14px;
-  color: #666;
+  
 }
 .sortList > li {
   display: inline-block;
   cursor: pointer;
+  font-size: 15px;
+  padding: 3px 13px 7px 13px;
+  border-radius: 20px;
+  background-color: rgb(181, 85, 85);
+  color: #fff;
 }
-
+.sortList > li:hover {
+  background-color: rgb(213, 109, 109);
+}
+/* fav list */
+.favTitle {
+  margin: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  color: #999;
+}
+.favList {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
 /* card list */
 .cardList {
   width: 100%;
   clear: both;
   padding: 10px 15px;
+  border-top: 1px solid #ccc;
 }
 .namecard {
   position: relative;

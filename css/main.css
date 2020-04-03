@@ -191,35 +191,51 @@ body *, body *::before, body *::after {
 /* NAMECARD COLOR */
 .color1 {
   background: rgb(232, 225, 216);
-  color: rgb(51, 51, 57);
+  color: rgb(235, 100, 79);
 }
 .color1 .cardDivision,
 .color1 .cardPosition {
-  border: 1px solid rgb(51, 51, 57);
+  border: 1px solid rgb(235, 100, 79);
 }
 .color2 {
   background: rgb(93, 118, 94);
-  color: rgb(223, 175, 149);
+  color: rgb(215, 189, 176);
 }
 .color2 .cardDivision,
 .color2 .cardPosition {
-  border: 1px solid rgb(223, 175, 149);
+  border: 1px solid rgb(215, 189, 176);
 }
 .color3 {
-  background: rgb(199, 211, 228);
-  color: rgb(181, 85, 85);
+  background: rgb(177, 197, 225);
+  color: rgb(191, 59, 79);
 }
 .color3 .cardDivision,
 .color3 .cardPosition {
-  border: 1px solid rgb(181, 85, 85);
+  border: 1px solid rgb(191, 59, 79);
 }
 .color4 {
-  background: rgb(223, 198, 185);
-  color: rgb(61, 69, 150);
+  background: rgb(208, 198, 193);
+  color: rgb(69, 72, 108);
 }
 .color4 .cardDivision,
 .color4 .cardPosition {
-  border: 1px solid rgb(61, 69, 150);
+  border: 1px solid rgb(69, 72, 108);
+}
+.color5 {
+  background: rgb(44, 82, 73);
+  color: rgb(215, 201, 197);
+}
+.color5 .cardDivision,
+.color5 .cardPosition {
+  border: 1px solid rgb(215, 201, 197);
+}
+.color6 {
+  background: rgb(218, 179, 170);
+  color: rgb(183, 60, 60);
+}
+.color6 .cardDivision,
+.color6 .cardPosition {
+  border: 1px solid rgb(183, 60, 60);
 }
 
 .namecard span {
@@ -363,5 +379,4 @@ body *, body *::before, body *::after {
   .cardList li, .favList li {
     margin: 10px 0;
   }
-
 }

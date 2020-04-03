@@ -136,24 +136,24 @@ const getCardList = () => {
   },
   {
     id: 5,
-    name: '이웅모',
-    company: '라인',
-    division: '경영지원팀',
-    position: '과장',
-    email: 'wj456@naver.com',
-    mobile: '010-2535-4985',
-    color: 'namecard color3',
-    favorite: false,
-  },
-  {
-    id: 6,
     name: '김데레사',
     company: '에어비앤비',
     division: 'UX디자인팀',
     position: '책임',
     email: 'se7890@naver.com',
     mobile: '010-2355-2455',
-    color: 'namecard color4',
+    color: 'namecard color6',
+    favorite: false,
+  },
+  {
+    id: 6,
+    name: '이웅모',
+    company: '라인',
+    division: '경영지원팀',
+    position: '과장',
+    email: 'wj456@naver.com',
+    mobile: '010-2535-4985',
+    color: 'namecard color5',
     favorite: false,
   }];
 
@@ -170,7 +170,7 @@ window.onload = getCardList;
 
 const generateColor = () => {
   const colorNumber = generateId();
-  return colorNumber % 4;
+  return colorNumber % 6;
 };
 
 $newName.onblur = e => {

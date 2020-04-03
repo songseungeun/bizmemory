@@ -1,8 +1,51 @@
-// states
 let cardList = [];
 
+const $newInfo = document.querySelector('.newInfo');
 const $cardList = document.querySelector('.cardList');
 const $submitBtn = document.querySelector('.submitBtn');
+const $sortName = document.querySelector('.sortName');
+const $sortCompany = document.querySelector('.sortCompany');
+const $sortRecent = document.querySelector('.sortRecent');
+const $favorite = document.querySelector('.favorite');
+
+const render = key => {
+  let html = '';
+  const sortBy = key => {
+    const sortById = cardList.sort((card1, card2) => card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0))
+    const sortByElse = cardList.sort((card1, card2) => card1[key] > card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0))
+    key === 'id' ? sortById : sortByElse;
+  };
+
+  sortBy(key);
+
+  cardList.forEach(card => {
+    html += `<li id="${card.id}" class="namecard color${card.color}">
+          <div class="namecardInfo">
+            <span class="cardName">${card.name}</span>
+            <span class="cardMobile">${card.mobile}</span>
+            <span class="cardEmail">${card.email}</span>
+          </div>
+          <div class="namecardCompany">
+            <span class="cardCompany">${card.company}</span>
+            <span class="cardDivision">${card.division}</span>
+            <span class="cardPosition">${card.position}</span>
+          </div>
+          <i class="deleteBtn fas fa-times"></i>
+          <button class="favorite">★</button>
+        </li>`;
+  });
+
+  $cardList.innerHTML = html;
+};
+
+const generateId = () => {
+  return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
+};
+
+const generateColor = () => {
+  let colorNumber = generateId();
+  return colorNumber % 4;
+};
 
 $submitBtn.onclick = e => {
   let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');

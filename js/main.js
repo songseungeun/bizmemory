@@ -93,7 +93,7 @@ const generateId = () => {
   return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
 };
 
-// window.onload = getCardList;
+window.onload = getCardList;
 
 
 const generateColor = () => {
@@ -180,7 +180,6 @@ const toFavList = target => {
     favorite: !card.favorite
   } : card));
 
-  console.log(cardList.map(card => card.favorite))
   render('id');
 };
 

@@ -11,37 +11,48 @@
 <body>
 
   <div class="wrapper clearfix">
-    
+    <div class="intro">
+      <h1>Biz memory</h1>
+      <em class="description">명함을 손쉽게 등록하고 관리할 수 있습니다.</em>
+    </div>
     <!-- register -->
     <div class="newInfo">
       <h2>Register</h2>
       <input type="text" class="newName" placeholder="Name">
+      <span class="nameWarn warnMsg">이름을 2자 이상 입력해주세요.</span>
       <input type="text" class="newCompany" placeholder="Company">
       <input type="text" class="newDevision" placeholder="Company Devision">
       <input type="text" class="newPosition" placeholder="Company Position">
       <input type="text" class="newEmail" placeholder="E-mail">
+      <span class="emailWarn warnMsg">이메일을 형식에 맞게 입력해주세요.</span>
       <input type="text" class="newMobile" placeholder="Mobile Number">
+      <span class="emailWarn warnMsg">핸드폰번호를 형식에 맞게 입력해주세요.</span>
       <button class="submitBtn">Add bizCard</button>
     </div>
 
     <!-- name card -->
     <div class="namecardList">
-      <h1>Biz memory</h1>
+      
 
       <!-- sort -->
-      <div class="sortWrapper">
-        <h3>sort by : </h3>
+      <div class="sortWrapper clearfix">
+        
         <ul class="sortList">
-          <li class="sortName">NAME</li>
-          <li class="sortCompany">COMPANY</li>
-          <li class="sortRecent">RECENT</li>
+          <li class="sortName">name</li>
+          <li class="sortCompany">company</li>
+          <li class="sortRecent">recent</li>
         </ul>
+        <h3>sort by</h3>
       </div>
 
+      <!-- card list -->
+      <h3 id="favTitle" class="favTitle">즐겨찾기 된 명함</h3>
+      <ul class="favList clearfix">
+        
+      </ul>
       <ul class="cardList clearfix">
 
-<!-- 
-        <li class="namecard color1">
+        <!-- <li id="1" class="namecard color1">
           <div class="namecardInfo">
             <span class="cardName">나길동</span>
             <span class="cardMobile">010-1354-4645</span>
@@ -52,58 +63,35 @@
             <span class="cardDivision">UX디자인팀</span>
             <span class="cardPosition">책임</span>
           </div>
-          <i class="deleteBtn fas fa-times"></i>
-        </li>
-
-        <li class="namecard color2">
-          <div class="namecardInfo">
-            <span class="cardName">가길동</span>
-            <span class="cardMobile">010-1354-4645</span>
-            <span class="cardEmail">abd@kakaobank.co.kr</span>
-          </div>
-          <div class="namecardCompany">
-            <span class="cardCompany">라인</span>
-            <span class="cardDivision">앱개발팀</span>
-            <span class="cardPosition">선임</span>
-          </div>
-          <i class="deleteBtn fas fa-times"></i>
-        </li>
-
-        <li class="namecard color3">
-          <div class="namecardInfo">
-            <span class="cardName">라길동</span>
-            <span class="cardMobile">010-1354-4645</span>
-            <span class="cardEmail">abd@kakaobank.co.kr</span>
-          </div>
-          <div class="namecardCompany">
-            <span class="cardCompany">쿠팡</span>
-            <span class="cardDivision">경영지원팀</span>
-            <span class="cardPosition">대리</span>
-          </div>
-          <i class="deleteBtn fas fa-times"></i>
-        </li>
-
-        <li class="namecard color4">
-          <div class="namecardInfo">
-            <span class="cardName">하길동</span>
-            <span class="cardMobile">010-1354-4645</span>
-            <span class="cardEmail">abd@kakaobank.co.kr</span>
-          </div>
-          <div class="namecardCompany">
-            <span class="cardCompany">에어비앤비</span>
-            <span class="cardDivision">인재개발팀</span>
-            <span class="cardPosition">과장</span>
-          </div>
-          <i class="deleteBtn fas fa-times"></i>
+          <img class="favoriteBtn far" src="./img/fav-icon.png">
+          <img class="favoriteBtn fas" src="./img/fav-icon-on.png">
+          <img class="deleteBtn" src="./img/close-btn.png">
         </li> -->
+        
+
 
 
       </ul>
 
+      <div class="blankMsg">
+        <span class="blankMsgText">
+          명함을 등록해주세요.
+        </span>
+      </div>
+      
     </div>
 
   </div>
+  <div class="modal">
+    <div class="warningWindow">
+      <span class="warningMsg">
+        'ㅇㅇ를 입력해주세요.'
+      </span>
+      <button class="warningClose">확인</button>
+    </div>
+  </div>
 
+  
   <!-- copyright <footer>
     
   </footer> -->

@@ -1,12 +1,11 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700|Noto+Sans+KR'); */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,672;1,900&display=swap');
-@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
 
 /* FONT STYLE */
 body {
   /* font-family: 'Roboto', 'Noto Sans KR', sans-serif; */
   font-family: 'Playfair Display', 'Noto Serif KR', serif;
+  background-color: #f4f4f4
 }
 
 /* BORDER-BOX */
@@ -28,48 +27,87 @@ body *, body *::before, body *::after {
   padding: 0;
   background-color: #f4f4f4;
 }
-h1 {
-  font-size: 40px;
+.intro {
+  display: block;
+  text-align: center;
+}
+.intro h1 {
+  margin: 25px 0 10px 0;
+  font-size: 60px;
   font-weight: 800;
   text-align: center;
-  color: #333;
+  color: rgb(65, 67, 84);
 }
-h2 {
+.intro .description {
+  font-size: 13px;
   text-align: center;
-  font-size: 25px;
-  font-weight: 800;
-  margin-bottom: 10px;
+  color: rgb(91, 86, 86);
 }
+
 .newInfo {
+  position: relative;
   width: 300px;
   background-color: #fff;
   float: left;
-  padding: 25px;
-  margin: 20px;
+  padding: 25px 25px 75px 25px;
+  margin: 30px 0 0 20px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.037);
-  z-index: 99;
+  /* z-index: 99; */
   border-radius: 10px;
 }
+.newInfo h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #666;
+}
 .newInfo input, .newInfo button {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
   font-family: 'Playfair Display', 'Noto Serif KR', serif;
 }
 .newInfo input {
+  width: 100%;
+  padding: 15px 10px 5px 10px;
   border: 0px;
   background-color: transparent;
-  border-bottom: 1.3px solid #333;
-  padding-bottom: 10px;
+  border-bottom: 1.3px solid #ccc;
   font-weight: 100;
   font-size: 20px;
+  color: #666;
+}
+.newInfo input::placeholder {
+  color: #aaa;
+}
+.newInfo input:focus {
+  outline: none;
+  border-bottom: 1px solid rgb(72, 91, 167);
 }
 .newInfo button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 13px;
+  width: 100%;
+  cursor: pointer;
   background-color: #2b313f;
   color: #fff;
-  border: 1px solid #2b313f;
+  border: 0;
   font-size: 20px;
   font-weight: 700;
+  margin: 20px 0 0 0;
+  border-radius: 0px 0px 10px 10px;
+  outline: none;
+}
+.newInfo button:hover {
+  background-color: #34466f;
+}
+/* warnning message */
+.warnMsg {
+  display: none;
+  font-size: 10px;
+  padding: 5px 10px 0 10px;
+  color: rgb(72, 91, 167);
 }
 
 /* name card list */
@@ -78,41 +116,71 @@ h2 {
   min-height: 100%;
   background-color: #f4f4f4;
   float: right;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+  position: relative;
 }
 
 /* sort list */
 .sortWrapper {
   float: right;
-  width: 50%;
-  margin: 10px;
+  width: 100%;
+  margin: 20px;
 }
 .sortWrapper h3 {
-  float: left;
+  float: right;
   text-align: right;
-  width: 50%;
+  margin-right: 15px;
+  padding-top: 3px;
+  font-size: 18px;
+  color: rgb(181, 85, 85);
 }
+
 .sortList {
   float: right;
-  width: 50%;
   text-align: right;
-  font-size: 14px;
-  color: #666;
 }
 .sortList > li {
   display: inline-block;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 5px 15px 7px 15px;
+  border-radius: 20px;
+  background-color: rgb(181, 85, 85);
+  color: #fff;
 }
-
+.sortList > li:hover {
+  background-color: rgb(213, 109, 109);
+}
+/* fav list */
+.favTitle {
+  margin: 10px 0;
+  max-width: 1020px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  color: #999;
+  margin: 0 auto;
+}
+.favList {
+  max-width: 1020px;
+  width: 100%;
+  padding: 10px 15px 20px 15px;
+  margin-bottom: 15px;
+  margin: 0 auto;
+}
 /* card list */
 .cardList {
+  max-width: 1020px;
   width: 100%;
   clear: both;
   padding: 10px 15px;
+  border-top: 1px solid #ccc;
+  margin: 0 auto;
 }
 .namecard {
   position: relative;
   padding: 20px;
-  width: 350px;
+  width: 320px;
   height: 180px;
   background-color: #d3d3d3;
   margin: 10px 10px 0 0;
@@ -123,38 +191,52 @@ h2 {
 /* NAMECARD COLOR */
 .color1 {
   background: rgb(232, 225, 216);
-  color: rgb(51, 51, 57);
+  color: rgb(235, 100, 79);
 }
 .color1 .cardDivision,
 .color1 .cardPosition {
-  border: 1px solid rgb(51, 51, 57);
+  border: 1px solid rgb(235, 100, 79);
 }
 .color2 {
   background: rgb(93, 118, 94);
-  color: rgb(223, 175, 149);
+  color: rgb(215, 189, 176);
 }
 .color2 .cardDivision,
 .color2 .cardPosition {
-  border: 1px solid rgb(223, 175, 149);
+  border: 1px solid rgb(215, 189, 176);
 }
 .color3 {
-  background: rgb(199, 211, 228);
-  color: rgb(181, 85, 85);
+  background: rgb(177, 197, 225);
+  color: rgb(191, 59, 79);
 }
 .color3 .cardDivision,
 .color3 .cardPosition {
-  border: 1px solid rgb(181, 85, 85);
+  border: 1px solid rgb(191, 59, 79);
 }
 .color4 {
-  background: rgb(223, 198, 185);
-  color: rgb(61, 69, 150);
+  background: rgb(208, 198, 193);
+  color: rgb(69, 72, 108);
 }
 .color4 .cardDivision,
 .color4 .cardPosition {
-  border: 1px solid rgb(61, 69, 150);
+  border: 1px solid rgb(69, 72, 108);
 }
-
-
+.color5 {
+  background: rgb(44, 82, 73);
+  color: rgb(215, 201, 197);
+}
+.color5 .cardDivision,
+.color5 .cardPosition {
+  border: 1px solid rgb(215, 201, 197);
+}
+.color6 {
+  background: rgb(218, 179, 170);
+  color: rgb(183, 60, 60);
+}
+.color6 .cardDivision,
+.color6 .cardPosition {
+  border: 1px solid rgb(183, 60, 60);
+}
 
 .namecard span {
   display: block;
@@ -181,7 +263,7 @@ h2 {
 
 .namecardCompany {
   float: right;
-  margin: 10px 10px 0 0;
+  margin: 15px 10px 0 0;
   font-size: 19px;
   font-weight: 600;
 }
@@ -194,18 +276,107 @@ h2 {
   border-radius: 20px;
   display: inline;
 }
+
+.favoriteBtn {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 8px 10px 8px 8px;
+}
 .deleteBtn {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 5px 10px 0 0;
-  font-size: 25px;
+  width: 18px;
+  margin: 11px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  color: rgba(255, 255, 255, .5);
+  opacity: 0.7;
 }
 
 .deleteBtn:hover {
-  color: rgba(255, 255, 255, .9);
+  opacity: 0.9;
+}
+/* Blank */
+.blankMsg {
+  display: none;
+  position: absolute;
+  top: 180px;
+  left: calc(50% - 200px);
+  color: #fff;
+  font-size: 40px;
+  font-weight: 500;
+  text-shadow: 3px 3px 5px rgba(160, 146, 146, 0.3);
+}
+.blankMsgText {
+
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.warningWindow {
+  position: absolute;
+  left: calc(50% - 200px);
+  top: calc(50% - 180px);
+  width: 400px;
+  height: 200px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 60px;
+}
+.warningMsg {
+  display: block;
+  font-size: 20px;
+  color: rgb(72, 91, 167);
+  text-align: center;
+}
+.warningClose {
+  width: 100%;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+  background-color: #2b313f;
+  color: #fff;
+  border: 0;
+  padding: 10px;
+}
+
+/* ----- MOBILE DEVICE ----- */
+@media screen and (max-width: 559px) {
+  .newInfo {
+    width: calc(100% - 37px);
+    float: left;
+    padding: 25px 25px 75px 25px;
+    margin: 30px 20px;
+  }
+  .namecardList {
+    width: 100%;
+    min-height: 100%;
+    background-color: #f4f4f4;
+    float: right;
+    padding: 10px;
+    position: relative;
+  }
+  .sortWrapper {
+    float: right;
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+  .cardList, .favList {
+    padding: 10px 22px;
+  }
+  .cardList li, .favList li {
+    margin: 10px 0;
+  }
 }

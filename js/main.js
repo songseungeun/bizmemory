@@ -88,3 +88,4 @@ $submitBtn.onclick = e => {
 
   inputs.forEach(input => input.value = '');
 };
+

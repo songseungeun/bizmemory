@@ -93,13 +93,29 @@ $submitBtn.onclick = e => {
   let newValues = inputs.map(input => input.value.trim());
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
-    // alert('빈칸을 채워주세요!');
-    // newValues.filter(value => {
-    //   $warningMsg.textContent = `${inputs}를 입력해 주세요`;
-    // });
 
-    // $modal.style.display = 'block';
-    // return;
+    $modal.style.display = 'block';
+
+    if (!newValues[0]) {
+      $warningMsg.textContent = '이름을 입력해 주세요';
+      return;
+    } if (!newValues[1]) {
+      $warningMsg.textContent = '회사를 입력해 주세요';
+      return;
+    } if (!newValues[2]) {
+      $warningMsg.textContent = '부서를 입력해 주세요';
+      return;
+    } if (!newValues[3]) {
+      $warningMsg.textContent = '직급을 입력해 주세요';
+      return;
+    } if (!newValues[4]) {
+      $warningMsg.textContent = '이메일을 입력해 주세요';
+      return;
+    } if (!newValues[5]) {
+      $warningMsg.textContent = '핸드폰 번호를 입력해 주세요';
+      return;
+    }
+    return;
   }
 
   if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;

@@ -1,13 +1,12 @@
+// State
 let cardList = [];
+
+const $cardList = document.querySelector('.cardList');
 
 const $newInfo = document.querySelector('.newInfo');
 const $submitBtn = document.querySelector('.submitBtn');
 
-const $cardList = document.querySelector('.cardList');
-
-const $sortName = document.querySelector('.sortName');
-const $sortCompany = document.querySelector('.sortCompany');
-const $sortRecent = document.querySelector('.sortRecent');
+const $sortList = document.querySelector('.sortList');
 
 const $favorite = document.querySelector('.favorite');
 
@@ -99,7 +98,6 @@ $submitBtn.onclick = e => {
   if (!checkName.test(newValues[0]) || !checkEmail.test(newValues[4]) || !checkMobile.test(newValues[5])) return;
   const [name, company, division, position, email, mobile] = newValues;
 
-
   cardList = [...cardList, {
     id: generateId(),
     name,
@@ -125,6 +123,20 @@ $cardList.onclick = e => {
   } = e.target.parentNode;
   if (!e.target.matches('.cardList > .namecard > i.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
+  render();
+};
+
+// Sort Button event
+$sortList.onclick = e => {
+  if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
+    cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));
+  }
+  if (e.target.matches('.sortWrapper > .sortList > .sortCompany')) {
+    cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
+  }
+  if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
+    cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
+  }
   render();
 };
 

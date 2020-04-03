@@ -1,15 +1,20 @@
 let cardList = [];
 
 const $newInfo = document.querySelector('.newInfo');
-const $cardList = document.querySelector('.cardList');
 const $submitBtn = document.querySelector('.submitBtn');
+
+const $cardList = document.querySelector('.cardList');
+
 const $sortName = document.querySelector('.sortName');
 const $sortCompany = document.querySelector('.sortCompany');
 const $sortRecent = document.querySelector('.sortRecent');
+
 const $favorite = document.querySelector('.favorite');
 
 const render = key => {
+
   let html = '';
+
   const sortBy = key => {
     const sortById = cardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : (card1[key] > card2[key] ? -1 : 0)));
     const sortByElse = cardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : (card1[key] < card2[key] ? -1 : 0)));
@@ -30,26 +35,40 @@ const render = key => {
             <span class="cardDivision">${card.division}</span>
             <span class="cardPosition">${card.position}</span>
           </div>
+          <i class="favoriteBtn ${card.favorite ? 'fas' : 'far'} fa-star"></i>
           <i class="deleteBtn fas fa-times"></i>
-          <i class="fas fa-star"></i>
         </li>`;
   });
 
   $cardList.innerHTML = html;
 };
 
+const getCardList = () => {
+  cardList = [
+    { id: 1, name: '이하은', company: '카카오 뱅크', division: '앱 개발팀', position: '대리', email: 'daidy@naver.com', mobile: '010-5067-5111', color: 'namecard color1', favorite: true, },
+    { id: 2, name: '김우정', company: '토스', division: '인재 개발팀', position: '선입', email: 'tj123y@naver.com', mobile: '010-2344-3453', color: 'namecard color2', favorite: false, },
+    { id: 3, name: '송승은', company: '쿠팡', division: '경영지원팀', position: '과장', email: 'wj456@naver.com', mobile: '010-2535-4985', color: 'namecard color3', favorite: false, },
+    { id: 4, name: '김태진', company: '에어비앤비', division: 'UX디자인팀', position: '책임', email: 'se7890@naver.com', mobile: '010-2355-2455', color: 'namecard color4', favorite: true, },
+  ];
+  render();
+};
+
+window.onload = getCardList;
+
 const generateId = () => {
   return cardList.length ? Math.max(...cardList.map(card => card.id)) + 1 : 1;
 };
 
 const generateColor = () => {
-  let colorNumber = generateId();
+  const colorNumber = generateId();
   return colorNumber % 4;
 };
 
 $submitBtn.onclick = e => {
+
   let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
   let newValues = inputs.map(input => input.value.trim());
+
   const checkEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const checkMobile = /^\d{3}-\d{4}-\d{4}/;
   const checkName = /../;
@@ -79,6 +98,7 @@ $submitBtn.onclick = e => {
 };
 
 // Delete Button event
+
 $cardList.onclick = e => {
   const {
     id
@@ -87,3 +107,24 @@ $cardList.onclick = e => {
   cardList = cardList.filter(card => card.id !== +id);
   render();
 };
+
+// favorite event
+
+const favoriteList = target => {
+  if (!target.matches('.cardList > li > i.favoriteBtn')) return;
+
+  let id = target.parentNode.id;
+  let isFav = cardList.filter(card => card.id === +id)[0].favorite;
+
+  cardList = cardList.map(card => (card.id === +id ? {
+    ...card,
+    favorite: !card.favorite
+  } : card));
+
+  console.log(isFav)
+  render('id');
+};
+
+$cardList.addEventListener('click', ({
+  target
+}) => favoriteList(target));

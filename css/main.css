@@ -109,6 +109,7 @@ body *, body *::before, body *::after {
   background-color: #f4f4f4;
   float: right;
   padding: 10px;
+  position: relative;
 }
 
 /* sort list */
@@ -249,6 +250,19 @@ body *, body *::before, body *::after {
 
 .deleteBtn:hover {
   color: rgba(255, 255, 255, .9);
+}
+/* Blank */
+.blankMsg {
+  position: absolute;
+  top: 180px;
+  left: calc(50% - 200px);
+  color: #fff;
+  font-size: 40px;
+  font-weight: 500;
+  text-shadow: 3px 3px 5px rgba(160, 146, 146, 0.3);
+}
+.blankMsgText {
+
 }
 
 /* MODAL */

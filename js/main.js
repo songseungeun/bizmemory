@@ -8,6 +8,7 @@ const $cardList = document.querySelector('.cardList');
 const $sortList = document.querySelector('.sortList');
 
 const $favList = document.querySelector('.favList');
+const $favTitle = document.getElementById('favTitle');
 
 const $newName = document.querySelector('.newName');
 const $newEmail = document.querySelector('.newEmail');
@@ -21,7 +22,7 @@ const render = key => {
 
   let html = '';
   let favHtml = '';
-  const isFav = [... cardList.filter(card => card.favorite), ...favCardList.filter(card => card.favorite)];
+  const isFav = [...cardList.filter(card => card.favorite), ...favCardList.filter(card => card.favorite)];
   const isNotFav = [...cardList.filter(card => !card.favorite), ...favCardList.filter(card => !card.favorite)];
 
   cardList = isNotFav;
@@ -69,20 +70,60 @@ const render = key => {
         </li>`;
   });
 
+  if (!favCardList.length) $favTitle.remove();
+
   $cardList.innerHTML = html;
   $favList.innerHTML = favHtml;
 };
 
 const getCardList = () => {
-  cardList = [
-    { id: 1, name: '이하은', company: '카카오 뱅크', division: '앱 개발팀', position: '대리', email: 'daidy@naver.com', mobile: '010-5067-5111', color: 'namecard color1', favorite: true, },
-    { id: 2, name: '김우정', company: '토스', division: '인재 개발팀', position: '선입', email: 'tj123y@naver.com', mobile: '010-2344-3453', color: 'namecard color2', favorite: false, },
-    ];
+  cardList = [{
+      id: 1,
+      name: '이하은',
+      company: '카카오 뱅크',
+      division: '앱 개발팀',
+      position: '대리',
+      email: 'daidy@naver.com',
+      mobile: '010-5067-5111',
+      color: 'namecard color1',
+      favorite: true,
+    },
+    {
+      id: 2,
+      name: '김우정',
+      company: '토스',
+      division: '인재 개발팀',
+      position: '선입',
+      email: 'tj123y@naver.com',
+      mobile: '010-2344-3453',
+      color: 'namecard color2',
+      favorite: false,
+    },
+  ];
 
-  favCardList = [
-    { id: 3, name: '송승은', company: '쿠팡', division: '경영지원팀', position: '과장', email: 'wj456@naver.com', mobile: '010-2535-4985', color: 'namecard color3', favorite: true, },
-    { id: 4, name: '김태진', company: '에어비앤비', division: 'UX디자인팀', position: '책임', email: 'se7890@naver.com', mobile: '010-2355-2455', color: 'namecard color4', favorite: true, },
-    ]
+  favCardList = [{
+      id: 3,
+      name: '송승은',
+      company: '쿠팡',
+      division: '경영지원팀',
+      position: '과장',
+      email: 'wj456@naver.com',
+      mobile: '010-2535-4985',
+      color: 'namecard color3',
+      favorite: true,
+    },
+    {
+      id: 4,
+      name: '김태진',
+      company: '에어비앤비',
+      division: 'UX디자인팀',
+      position: '책임',
+      email: 'se7890@naver.com',
+      mobile: '010-2355-2455',
+      color: 'namecard color4',
+      favorite: true,
+    },
+  ]
   render();
 
 };
@@ -138,7 +179,9 @@ $submitBtn.onclick = () => {
 
   render('id');
 
-  inputs.forEach(input => { input.value = ''; });
+  inputs.forEach(input => {
+    input.value = '';
+  });
 };
 
 // Delete Button event
@@ -149,6 +192,15 @@ $cardList.onclick = e => {
   } = e.target.parentNode;
   if (!e.target.matches('.cardList > .namecard > img.deleteBtn')) return;
   cardList = cardList.filter(card => card.id !== +id);
+  render();
+};
+
+$favList.onclick = e => {
+  const {
+    id
+  } = e.target.parentNode;
+  if (!e.target.matches('.favList > .namecard > i.deleteBtn')) return;
+  favCardList = favCardList.filter(card => card.id !== +id);
   render();
 };
 
@@ -201,4 +253,4 @@ $sortList.onclick = e => {
     cardList = cardList.sort((recent1, recent2) => ((recent1.id > recent2.id) ? 1 : recent1.id < recent2.id ? -1 : 0));
   }
   render();
-}
+};

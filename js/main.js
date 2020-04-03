@@ -179,32 +179,25 @@ $submitBtn.onclick = () => {
   const newValues = inputs.map(input => input.value.trim());
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
-
     $modal.style.display = 'block';
-
-    if (!newValues[0]) {
-      $warningMsg.textContent = '이름을 입력해 주세요';
-      return;
-    }
-    if (!newValues[1]) {
-      $warningMsg.textContent = '회사를 입력해 주세요';
-      return;
-    }
-    if (!newValues[2]) {
-      $warningMsg.textContent = '부서를 입력해 주세요';
-      return;
-    }
-    if (!newValues[3]) {
-      $warningMsg.textContent = '직급을 입력해 주세요';
-      return;
-    }
-    if (!newValues[4]) {
-      $warningMsg.textContent = '이메일을 입력해 주세요';
-      return;
-    }
-    if (!newValues[5]) {
-      $warningMsg.textContent = '핸드폰 번호를 입력해 주세요';
-      return;
+    switch (true) {
+      case !newValues[0]:
+        $warningMsg.textContent = '이름을 입력해 주세요.';
+        break;
+      case !newValues[1]:
+        $warningMsg.textContent = '회사를 입력해 주세요.';
+        break;
+      case !newValues[2]:
+        $warningMsg.textContent = '부서를 입력해 주세요.';
+        break;
+      case !newValues[3]:
+        $warningMsg.textContent = '직급을 입력해 주세요.';
+        break;
+      case !newValues[4]:
+        $warningMsg.textContent = '이메일을 입력해 주세요.';
+        break;
+      default:
+        $warningMsg.textContent = '핸드폰 번호를 입력해 주세요.';
     }
     return;
   }

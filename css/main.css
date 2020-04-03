@@ -312,9 +312,6 @@ body *, body *::before, body *::after {
   font-weight: 500;
   text-shadow: 3px 3px 5px rgba(160, 146, 146, 0.3);
 }
-.blankMsgText {
-
-}
 
 /* MODAL */
 .modal {
@@ -344,13 +341,29 @@ body *, body *::before, body *::after {
 }
 .warningClose {
   width: 100%;
-  margin: 20px 0 0 0;
+  margin: 25px 0 0 0;
   cursor: pointer;
   background-color: #2b313f;
   color: #fff;
   border: 0;
   padding: 10px;
+  font-size: 16px;
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
 }
+
+.footer {
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #333;
+  text-align: center;
+  line-height: 1.7;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+}
+.copyright {
+  color: #666;
+  font-size: 12px;
+}
+
 
 /* ----- MOBILE DEVICE ----- */
 @media screen and (max-width: 559px) {
@@ -378,5 +391,17 @@ body *, body *::before, body *::after {
   }
   .cardList li, .favList li {
     margin: 10px 0;
+  }
+  .blankMsg {
+    top: 80px;
+    left: 0;
+    font-size: 33px;
+    padding: 35px;
+  }
+  .warningWindow {
+    left: calc(50% - 160px);
+    top: calc(50% - 180px);
+    width: 320px;
+    height: 200px;
   }
 }

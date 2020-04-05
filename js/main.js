@@ -81,6 +81,7 @@ const render = () => {
 // Modifyed by haeun
 const sortRecent = () => {
   cardList.sort((card1, card2) => card2.id - card1.id);
+  favCardList.sort((card1, card2) => card2.id - card1.id);
   render();
 };
 
@@ -291,22 +292,45 @@ $sortList.onclick = e => {
   
   const copyCardList = [...cardList];
 
-  const sortName = key => copyCardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : ( card1[key] < card2[key] ? -1 : 0)));
-  const reverseName = key => copyCardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : ( card1[key] > card2[key] ? -1 : 0)));
-
+  const sortCard = key => copyCardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : ( card1[key] < card2[key] ? -1 : 0)));
+  const reverseCard = key => copyCardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : ( card1[key] > card2[key] ? -1 : 0)));
+  
   const sortBy = key => {
     if (cardList.length === 0 || cardList.length === 1 ) return;
-    if ((cardList[0].id === sortName(key)[0].id) && (cardList[1].id === sortName(key)[1].id)) {
-      cardList = reverseName(key);
+    if ((cardList[0].id === sortCard(key)[0].id) && (cardList[1].id === sortCard(key)[1].id)) {
+      cardList = reverseCard(key);
       render();
       return;
     }
-    cardList = sortName(key);
+    cardList = sortCard(key);
     render();
   };
 
-  if (e.target.matches('.sortName')) sortBy('name');
-  if (e.target.matches('.sortCompany')) sortBy('company');
+
+  const copyFavCardList = [...favCardList];
+
+  const sortFavCard = key => copyFavCardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : ( card1[key] < card2[key] ? -1 : 0)));
+  const reverseFavCard = key => copyFavCardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : ( card1[key] > card2[key] ? -1 : 0)));
+  
+  const favSortBy = key => {
+    if (favCardList.length === 0 || favCardList.length === 1 ) return;
+    if ((favCardList[0].id === sortFavCard(key)[0].id) && (favCardList[1].id === sortFavCard(key)[1].id)) {
+      favCardList = reverseFavCard(key);
+      render();
+      return;
+    }
+    favCardList = sortFavCard(key);
+    render();
+  };
+
+  if (e.target.matches('.sortName')) {
+    sortBy('name');
+    favSortBy('name');
+  }
+  if (e.target.matches('.sortCompany')) {
+    sortBy('company');
+    favSortBy('company');
+  }
   if (e.target.matches('.sortRecent')) sortRecent();
 
 };

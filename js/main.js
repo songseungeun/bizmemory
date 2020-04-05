@@ -285,7 +285,7 @@ $favList.addEventListener('click', e => favList(e));
 // };
 
 
-// Sort Button event (Modifed by Haeun)
+// Sort Button event (Modifed by Haeun) 
 
 $sortList.onclick = e => {  
   

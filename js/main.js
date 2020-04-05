@@ -240,15 +240,6 @@ $nameCardList.onclick = e => {
   render();
 };
 
-// $namecardList.onclick = e => {
-//   const { id } = e.target.parentNode;
-//   if (e.target.matches('.cardList > .namecard > img.deleteBtn') && !e.target.matches('.favList > .namecard > img.deleteBtn')) return;
-//   favCardList = favCardList.filter(card => card.id !== +id);
-//   render();
-// };
-
-
-
 // favorite event
 const favList = e => {
   if (!e.target.matches('.cardList > li > img.favoriteBtn') && !e.target.matches('.favList > li > img.favoriteBtn')) return;

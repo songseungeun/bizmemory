@@ -78,6 +78,12 @@ const render = () => {
   blankMsg();
 };
 
+// Modifyed by haeun
+const sortRecent = () => {
+  cardList.sort((card1, card2) => card2.id - card1.id);
+  render();
+};
+
 const getCardList = () => {
   cardList = [{
     id: 1,
@@ -119,18 +125,18 @@ const getCardList = () => {
     division: 'UX디자인팀',
     position: '책임',
     email: 'se7890@naver.com',
-    mobile: '010-2355-2455',
+    mobile: '010-0355-2455',
     color: 'namecard color4',
     favorite: false,
   },
   {
     id: 5,
     name: '김데레사',
-    company: '에어비앤비',
+    company: '네이버',
     division: 'UX디자인팀',
     position: '책임',
     email: 'se7890@naver.com',
-    mobile: '010-2355-2455',
+    mobile: '010-7960-1315',
     color: 'namecard color6',
     favorite: false,
   },
@@ -141,10 +147,12 @@ const getCardList = () => {
     division: '경영지원팀',
     position: '과장',
     email: 'wj456@naver.com',
-    mobile: '010-2535-4985',
+    mobile: '010-8929-0265',
     color: 'namecard color5',
     favorite: false,
-  }].sort((card1, card2) => card2.id - card1.id);
+  }];
+
+  sortRecent();
 
   favCardList = [];
   render('id');
@@ -263,15 +271,42 @@ $favList.addEventListener('click', e => favList(e));
 
 // Sort Button event
 
-$sortList.onclick = e => {
-  if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
-    cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));
-  }
-  if (e.target.matches('.sortWrapper > .sortList > .sortCompany')) {
-    cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
-  }
-  if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
-    cardList = cardList.sort((recent1, recent2) => ((recent1.id < recent2.id) ? 1 : recent1.id > recent2.id ? -1 : 0));
-  }
-  render();
+// $sortList.onclick = e => {
+//   if (e.target.matches('.sortWrapper > .sortList > .sortName')) {
+//     cardList = cardList.sort((card1, card2) => (card1.name > card2.name ? 1 : card1.name < card2.name ? -1 : 0));
+//   }
+//   if (e.target.matches('.sortWrapper > .sortList > .sortCompany')) {
+//     cardList = cardList.sort((co1, co2) => ((co1.company > co2.company) ? 1 : co1.company < co2.company ? -1 : 0));
+//   }
+//   if (e.target.matches('.sortWrapper > .sortList > .sortRecent')) {
+//     cardList = cardList.sort((recent1, recent2) => ((recent1.id < recent2.id) ? 1 : recent1.id > recent2.id ? -1 : 0));
+//   }
+//   render();
+// };
+
+
+// Sort Button event (Modifed by Haeun)
+
+$sortList.onclick = e => {  
+  
+  const copyCardList = [...cardList];
+
+  const sortName = key => copyCardList.sort((card1, card2) => (card1[key] > card2[key] ? 1 : ( card1[key] < card2[key] ? -1 : 0)));
+  const reverseName = key => copyCardList.sort((card1, card2) => (card1[key] < card2[key] ? 1 : ( card1[key] > card2[key] ? -1 : 0)));
+
+  const sortBy = key => {
+    if (cardList.length === 0 || cardList.length === 1 ) return;
+    if ((cardList[0].id === sortName(key)[0].id) && (cardList[1].id === sortName(key)[1].id)) {
+      cardList = reverseName(key);
+      render();
+      return;
+    }
+    cardList = sortName(key);
+    render();
+  };
+
+  if (e.target.matches('.sortName')) sortBy('name');
+  if (e.target.matches('.sortCompany')) sortBy('company');
+  if (e.target.matches('.sortRecent')) sortRecent();
+
 };

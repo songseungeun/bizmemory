@@ -4,6 +4,7 @@ let favCardList = [];
 const $newInfo = document.querySelector('.newInfo');
 const $submitBtn = document.querySelector('.submitBtn');
 
+const $namecardList = document.querySelector('.namecardList');
 const $cardList = document.querySelector('.cardList');
 const $sortList = document.querySelector('.sortList');
 
@@ -179,12 +180,44 @@ $newMobile.onblur = e => {
 
 $submitBtn.onclick = () => {
 
-  let inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
-  let newValues = inputs.map(input => input.value.trim());
+  const inputs = [...$newInfo.children].filter(child => child.nodeName === 'INPUT');
+  const newValues = inputs.map(input => input.value.trim());
 
   if (newValues.filter(value => value.length === 0).length !== 0) {
 
     $modal.style.display = 'block';
+
+    // switch (표현식) {
+    //   case 표현식1:
+    //     switch 문의 표현식과 표현식1이 일치하면 실행될 문;
+    //     break;
+    //   case 표현식2:
+    //     switch 문의 표현식과 표현식2가 일치하면 실행될 문;
+    //     break;
+    //   default:
+    //     switch 문의 표현식과 일치하는 표현식을 갖는 case 문이 없을 때 실행될 문;
+    // }
+
+    
+    switch (true) {
+      case !newValues[0]:
+        $warningMsg.textContent = '이름을 입력해 주세요';
+        break;
+      case !newValues[1]:
+        $warningMsg.textContent = '회사를 입력해 주세요';
+        break;
+      case !newValues[2]:
+        $warningMsg.textContent = '부서를 입력해 주세요';
+        break;
+      case !newValues[3]:
+        $warningMsg.textContent = '직급을 입력해 주세요';
+        break;
+      case !newValues[4]:
+        $warningMsg.textContent = '이메일을 입력해 주세요';
+        break;
+      default:
+        $warningMsg.textContent = '핸드폰 번호를 입력해 주세요';
+    }
 
     if (!newValues[0]) {
       $warningMsg.textContent = '이름을 입력해 주세요';
@@ -256,12 +289,21 @@ $favList.onclick = e => {
   render();
 };
 
+// $namecardList.onclick = e => {
+//   const { id } = e.target.parentNode;
+//   if (e.target.matches('.cardList > .namecard > img.deleteBtn') && !e.target.matches('.favList > .namecard > img.deleteBtn')) return;
+//   favCardList = favCardList.filter(card => card.id !== +id);
+//   render();
+// };
+
+
+
 // favorite event
 
 const toFavList = target => {
   if (!target.matches('.cardList > li > img.favoriteBtn')) return;
 
-  let id = target.parentNode.id;
+  const { id } = target.parentNode;
 
   cardList = cardList.map(card => (card.id === +id ? {
     ...card,
@@ -274,7 +316,7 @@ const toFavList = target => {
 const fromFavList = target => {
   if (!target.matches('.favList > li > img.favoriteBtn')) return;
 
-  let id = target.parentNode.id;
+  const { id } = target.parentNode;
 
   favCardList = favCardList.map(card => (card.id === +id ? {
     ...card,

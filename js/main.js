@@ -304,7 +304,7 @@ $sortList.onclick = e => {
     }
     cardList = sortCard(key);
     render();
-  };
+  }; 
 
 
   const copyFavCardList = [...favCardList];
